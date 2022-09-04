@@ -25,7 +25,7 @@
      */
     @Override
     public String toString() {
-      return String.format(super.toString() + ": Customer %d departed", this.customer.getCustomerId());
+      return String.format(super.toString() + ": %s departed", this.customer);
     }
   
       /**

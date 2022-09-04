@@ -4,31 +4,30 @@
  */
 
  class Counter {
+  private static int count = 0;
   private int counterId;
   private boolean available;
 
-  public Counter(int counterId) {
-    this.counterId = counterId;
+  public Counter() {
+    this.counterId = count;
     this.available = true;
+    count++;
   }
 
   public boolean getAvailable() {
-    return this.available;
+    return available;
   }
 
-  public void setAvailabe(boolean available) {
-    this.available = available;
+  public void makeAvailable() {
+    this.available = true;
   }
 
-  public int getCounterId() {
-    return this.counterId;
+  public void makeUnavailable() {
+    this.available = false;
   }
 
   @Override
   public String toString() {
-    if (available) {
-      return String.format("Counter %d is available", this.counterId);
-    }
-    return String.format("Counter %d is not available", this.counterId);
+    return String.format("Counter %d", this.counterId);
   }
 }

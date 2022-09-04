@@ -6,7 +6,6 @@
 
  class ServiceEndEvent extends Event {
   private Customer customer;
-  private Shop shop;
   private Counter counter;
 
     /**
@@ -15,13 +14,11 @@
    * @param time        The time this event occurs.
    * @param customer    The customer associated with this event.
    * @param counter     The counter associated with this event.
-   * @param shop        The shop associated with this event.
    */
-  public ServiceEndEvent(double time, Customer customer, Counter counter, Shop shop) {
+  public ServiceEndEvent(double time, Customer customer, Counter counter) {
     super(time);
     this.customer = customer;
     this.counter = counter;
-    this.shop = shop;
   }
 
    /**
@@ -31,7 +28,7 @@
    */
   @Override
   public String toString() {
-    return String.format(super.toString() + ": Customer %d service done (by Counter %d)", this.customer.getCustomerId(), this.counter.getCounterId());
+    return String.format(super.toString() + ": %s service done (by %s)", this.customer, this.counter);
   }
 
     /**
@@ -45,7 +42,7 @@
       // The current event is a service-end event.  
       // Mark the counter is available, then schedule
       // a departure event at the current time.
-      this.shop.getCounters()[this.counter.getCounterId()].setAvailabe(true);
+      this.counter.makeAvailable();
       return new Event[] { 
         new DepartureEvent(this.getTime(), this.customer)
       };

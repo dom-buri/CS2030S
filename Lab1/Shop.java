@@ -7,11 +7,19 @@ class Shop {
 
     private Counter[] counters;
 
-    public Shop(Counter[] counters) {
-        this.counters = counters;
+    public Shop(int numOfCounters) {
+    	counters = new Counter[numOfCounters];
+	    for (int i = 0; i < numOfCounters; i +=1) {
+	      counters[i] = new Counter();
+	    }   
     }
-    
-    public Counter[] getCounters() {
-        return this.counters;
+
+    public Counter getFirstAvailableCounter() {
+      for (int i = 0; i < this.counters.length; i += 1) {
+        if (this.counters[i].getAvailable()) {
+          return this.counters[i];
+        }
+      }
+      return null;
     }
 }

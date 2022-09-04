@@ -29,18 +29,14 @@ class ShopSimulation extends Simulation {
     initEvents = new Event[sc.nextInt()];
     int numOfCounters = sc.nextInt();
 
-    Counter[] counters = new Counter[numOfCounters];
-    for (int i = 0; i < numOfCounters; i++) {
-      counters[i] = new Counter(i);;
-    }
-
-    shop = new Shop(counters);
+    shop = new Shop(numOfCounters);
 
     int id = 0;
     while (sc.hasNextDouble()) {
       double arrivalTime = sc.nextDouble();
       double serviceTime = sc.nextDouble();
-      initEvents[id] = new ArrivalEvent(arrivalTime, new Customer(id), serviceTime, shop);
+      Customer c = new Customer(arrivalTime, serviceTime);
+      initEvents[id] = new ArrivalEvent(arrivalTime, c, shop);
       id += 1;
     }
   }
