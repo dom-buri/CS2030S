@@ -7,22 +7,22 @@
 
  class QueueEvent extends Event {
   private Customer customer;
-  private Queue queue;
+  private Shop shop;
 
-  public QueueEvent(double time, Customer customer, Queue queue) {
+  public QueueEvent(double time, Customer customer, Shop shop) {
     super(time);
     this.customer = customer;
-    this.queue = queue;
+    this.shop = shop;
   }
 
   @Override
   public String toString() {
-    return String.format(super.toString() + ": %s joined queue %s", this.customer, this.queue);
+    return String.format(super.toString() + ": %s joined queue %s", this.customer, this.shop);
   }
 
   @Override
   public Event[] simulate() {
-    queue.enq(customer);
+    shop.getQueue().enq(customer);
     return new Event[] {};
   }
 }

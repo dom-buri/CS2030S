@@ -50,7 +50,7 @@ class ArrivalEvent extends Event {
         };
       } else {
         return new Event[] {
-            new QueueEvent(this.getTime(), this.customer, this.shop.getQueue())
+            new QueueEvent(this.getTime(), this.customer, this.shop)
         };
       }
     } else {
