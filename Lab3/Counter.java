@@ -23,10 +23,6 @@ class Counter implements Comparable<Counter> {
     return this.available;
   }
 
-  public int getCounterId() {
-    return this.counterId;
-  }
-
   public Queue<Customer> getCounterQueue() {
     return this.counterQueue;
   }
@@ -42,7 +38,7 @@ class Counter implements Comparable<Counter> {
   @Override
   public int compareTo(Counter other) {
     if (this.available && other.getAvailable()) {
-      if (this.counterId < other.getCounterId()) {
+      if (this.counterId < other.counterId) {
         return -1;
       } else {
         return 1;
@@ -56,7 +52,7 @@ class Counter implements Comparable<Counter> {
         return -1;
       } else {
         if (this.counterQueue.length() == other.getCounterQueue().length()) {
-          if (this.counterId < other.getCounterId()) {
+          if (this.counterId < other.counterId) {
             return -1;
           } else {
             return 1;
