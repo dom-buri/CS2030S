@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"cs2030s.fp","l":"Lazy"}]

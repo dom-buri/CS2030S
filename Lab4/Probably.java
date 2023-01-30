@@ -10,7 +10,7 @@
  */
 
  //Immutator<? ___ T>
-class Probably<T> implements Actionable<Object>, Immutatorable<T>, Applicable<T> {
+class Probably<T> implements Actionable<T>, Immutatorable<T>, Applicable<T> {
   private final T value;
 
   private static final Probably<?> NONE = new Probably<>(null);
@@ -27,7 +27,7 @@ class Probably<T> implements Actionable<Object>, Immutatorable<T>, Applicable<T>
   }
 
   @Override
-  public void act(Action<Object> obj) {
+  public void act(Action<? super T> obj) {
     if (this.value != null) {
       obj.call(this.value);
     } 
